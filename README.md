@@ -1,1 +1,2 @@
-# ssm_book_club
+# State Space Model Book Club
+
