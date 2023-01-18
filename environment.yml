@@ -1,0 +1,17 @@
+name: ssm_book_club
+channels:
+  - conda-forge
+dependencies:
+  - jupyter
+  - jupyterlab
+  - jupytext
+  - matplotlib
+  - numpy
+  - pandas
+  - pip
+  - python=3.10.4
+  - scipy
+  - seaborn
+  - statsmodels
+  - pip:
+    - dynamax @ git+https://github.com/probml/dynamax
