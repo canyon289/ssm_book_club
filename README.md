@@ -1,7 +1,7 @@
 # State Space Model Book Club
 
 ## Resources
-* **Commmunity** - https://community.intuitivebayes.com/
+* **Community** - https://community.intuitivebayes.com/
 * **Kick off Blog Post** - https://ravinkumar.com/ssm-book-club.html
 * **Livestreams** - https://www.youtube.com/@ravink/streams
 
