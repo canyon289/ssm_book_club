@@ -4,6 +4,9 @@
 * **Community** - https://community.intuitivebayes.com/
 * **Kick off Blog Post** - https://ravinkumar.com/ssm-book-club.html
 * **Livestreams** - https://www.youtube.com/@ravink/streams
+* **ProbML Book** - https://probml.github.io/pml-book/book2.html
+  * Chapter 8
+  * Chapter 9
 
 ## Environment Setup
 The best way to learn is to get hands on with the code. 
