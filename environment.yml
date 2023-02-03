@@ -9,6 +9,7 @@ dependencies:
   - numpy
   - pandas
   - pip
+  - pymc
   - python=3.10.4
   - scipy
   - seaborn

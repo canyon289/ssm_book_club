@@ -13,7 +13,32 @@ jupyter:
     name: python3
 ---
 
-## How I Learn Notation
+# How I Learn Notation
+
+
+## Why Notation
+
+
+1. It's the most compact and precise way to represent math
+2. There's no way to avoid it with the texts we've picked
+
+
+## Full State Space Model Equation
+
+
+$$p(y_{1:T}, z_{1:T} | u_{1:T}) = p(z_1 | u_1) p(y_1 | z_1, u_1) \prod_{t=1}^T p(z_t | z_{t-1}, u_t) p(y_t | z_t, u_t)$$
+
+
+ProbML Equation 29.5
+
+
+## Bayes Theorem
+
+
+$$ \underbrace{p(\boldsymbol{\theta} \mid \boldsymbol{Y})}_{\text{posterior}} = \frac{\overbrace{p(\boldsymbol{Y} \mid \boldsymbol{\theta})}^{\text{likelihood}}; \overbrace{p(\boldsymbol{\theta})}^{\text{prior}}}{\underbrace{{{\int_{\boldsymbol{\Theta}} p(\boldsymbol{Y} \mid \boldsymbol{\theta})p(\boldsymbol{\theta}) d\boldsymbol{\theta}}}}_{\text{marginal likelihood}}} $$
+
+
+## My steps
 
 
 1. Understand the fundamental philosophy
@@ -23,25 +48,36 @@ jupyter:
 4. Add complexity one step at a time
 
 
+This is what we did just did for Bayes Theorem
+
+
+## Bayes Theorem Simplified
+
+
+Started here
+
+
+$$
+\text{Posterior} = \frac{\text{Likelihood} ; * \text{Prior}}{\text{Marginal-Likelihood}}
+$$
+
+
+From there we built back up to Linear Regression
+
+
 ## Things I looks for
 
 
 1. What type of math am I dealing with?
-  * Probsbility
+  * Probability
   * Distributions
   * Integrals etc
 2. Figure out what's a scalar, vector, matrix
-  * Figure out whats a real number, indicator, random variablle
+  * Figure out whats a real number, indicator, random variable
 3. Pay attention to shapes
 
 
-## Full State Space Model Equation
-
-
-$$p(y_{1:T}, z_{1:T} | u_{1:T}) = p(z_1 | u_1) p(y_1 | z_1, u_1) \prod_{t=1}^T p(z_t | z_{t-1}, u_t) p(y_t | z_t, u_t)$$
-
-
-## Simplified Version
+## State Space Model Simplified Version
 
 
 \begin{align}
@@ -50,6 +86,21 @@ p(y_{1:T}, z_{1:T} \mid \theta)
 \prod_{t=2}^T \mathrm{Cat}(z_t \mid A_{z_{t-1}}) 
 \prod_{t=1}^T \mathrm{Cat}(y_t \mid B_{z_t})
 \end{align}
+
+
+* Hidden Markov Model
+    * No covariates
+    * Categorical discrete outcomes
+
+
+## Use the Symbol ist often
+
+
+Its on github
+
+
+
+##
 
 
 ## State Space Models

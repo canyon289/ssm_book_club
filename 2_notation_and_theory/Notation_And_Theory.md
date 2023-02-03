@@ -15,6 +15,15 @@ jupyter:
 
 # State Space Model Book Club
 
+```python
+import numpy as np
+import pymc as pm
+import arviz as az
+import pandas as pd
+import preliz as pz
+
+import matplotlib.pyplot as plt
+```
 
 ## Agenda
 
@@ -161,11 +170,12 @@ All are possible, except 0%
 
 ## What is the plausibility of the conversion rates?
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ### Lets start with priors
+<!-- #endregion -->
 
 ```python
-pz.Beta(2, 2).plot_pdf(figsize=(24,12));
+pz.Beta(1, 1).plot_pdf(figsize=(20,8));
 ```
 
 ## Bayesian Update
@@ -173,14 +183,15 @@ pz.Beta(2, 2).plot_pdf(figsize=(24,12));
 ```python
 num_conversions = 8
 num_non_conversions = 100 - num_conversions
-pz.Beta(2+8, 2+num_non_conversions).plot_pdf();
+pz.Beta(1+num_conversions, 1+num_non_conversions).plot_pdf();
 ```
 
-## Relatively Plausibility of all possible beliefs
+## Relative Plausibility of all possible beliefs
 
 ```python
 num_conversions = 8
-num_non_conversions = 100 - num_conversions
+num_visits = 100
+num_non_conversions = num_visits - num_conversions
 pz.Beta(2+8, 2+num_non_conversions).plot_pdf();
 ```
 
@@ -188,13 +199,13 @@ pz.Beta(2+8, 2+num_non_conversions).plot_pdf();
 
 ```python
 with pm.Model() as model:
-    θ = pm.Beta("θ", 2, 10)
-    y = pm.Binomial("y", n=1, p=θ, observed=signups)
-    trace = pm,sample()
+    θ = pm.Beta("θ", 1, 1)
+    y = pm.Binomial("y", n=num_visits, p=θ, observed=num_conversions)
+    trace = pm.sample()
 ```
-
-
-
+```python
+az.plot_trace(trace);
+```
 
 ## What's the difference
 
@@ -212,25 +223,88 @@ with pm.Model() as model:
   * Generally applicable
 
 
-## Dynamax Book Club Takeaway
+## Relation to this book club
 
 
 * Various SSMs have "pen and paper" solutions
-* With tools like Dyna
+* With tools like Dynamax different and more complex models may be solvable
+  * Dynamax supports MCMC through blackjax so we might see this ater
 
-
+<!-- #region slideshow={"slide_type": "fragment"} -->
 We want to learn both the traditional techniques **and** what newer tools like JAX and Dynamax let us solve
+<!-- #endregion -->
+
+## Bayesian Linear Regression of Penguins
+
+```python
+penguins_url = "https://gist.githubusercontent.com/slopp/ce3b90b9168f2f921784de84fa445651/raw/4ecf3041f0ed4913e7c230758733948bc561f434/penguins.csv"
+penguins = pd.read_csv(penguins_url)
+# Subset to the columns needed
+missing_data = penguins.isnull()[
+    ["bill_length_mm", "flipper_length_mm", "sex", "body_mass_g"]
+].any(axis=1)
+# Drop rows with any missing data
+penguins = penguins.loc[~missing_data]
+
+adelie_mask = (penguins["species"] == "Adelie")
+adelie_mass_obs = penguins.loc[adelie_mask, "body_mass_g"].values
+adelie_flipper_length_obs = penguins.loc[adelie_mask, "flipper_length_mm"]
+
+```
+
+```python
+fig, ax = plt.subplots()
 
 
+ax.scatter(adelie_flipper_length_obs, adelie_mass_obs)
 
+ax.set_xlabel('Flipper Length')
+ax.set_ylabel('Mass');
+```
 
+```python
 
+with pm.Model() as model_adelie_flipper_regression:
+    # pm.Data allows us to change the underlying value in a later code block
+    adelie_flipper_length = pm.Data("adelie_flipper_length",
+                                    adelie_flipper_length_obs)
+    σ = pm.HalfStudentT("σ", 100, 2000)
+    β_0 = pm.Normal("β_0", 0, 4000)
+    β_1 = pm.Normal("β_1", 0, 4000)
+    μ = pm.Deterministic("μ", β_0 + β_1 * adelie_flipper_length)
 
+    mass = pm.Normal("mass", mu=μ, sigma=σ, observed = adelie_mass_obs)
 
+    inf_data_adelie_flipper_regression = pm.sample(return_inferencedata=True)
 
-## Bayesian Intution Recap
+```
+
+```python
+fig, ax = plt.subplots()
+alpha_m = inf_data_adelie_flipper_regression.posterior.mean().to_dict()["data_vars"]["β_0"]["data"]
+beta_m = inf_data_adelie_flipper_regression.posterior.mean().to_dict()["data_vars"]["β_1"]["data"]
+
+flipper_length = np.linspace(adelie_flipper_length_obs.min(), adelie_flipper_length_obs.max(), 100)
+
+flipper_length_mean = alpha_m + beta_m * flipper_length
+ax.plot(flipper_length, flipper_length_mean, c='g', lw=4,
+         label=f'y = {alpha_m:.2f} + {beta_m:.2f} * x')
+
+ax.scatter(adelie_flipper_length_obs, adelie_mass_obs)
+
+# Figure out how to do this from inference data
+az.plot_hdi(adelie_flipper_length_obs, inf_data_adelie_flipper_regression.posterior['μ'], hdi_prob=0.94, color='k', ax=ax)
+
+ax.set_xlabel('Flipper Length')
+ax.set_ylabel('Mass');
+```
+
+## Dynamax Book Club Takeaway
 
 
 * Bayes theorem is a philosophy for how we can update our beliefs given observations
 * ProbML calls outcome -> belief mapping inverse probability
 * What we care about is the relative plausibiilty
+* For the same model there can be different estimators
+  * Each as their tradeoffs
+  * Computer enables newer ones not possible in the past
