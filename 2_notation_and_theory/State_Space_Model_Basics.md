@@ -13,16 +13,23 @@ jupyter:
     name: python3
 ---
 
+<!-- #region slideshow={"slide_type": "slide"} -->
 # State Space Models
+<!-- #endregion -->
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Two Parts
+<!-- #endregion -->
 
-
+<!-- #region slideshow={"slide_type": "fragment"} -->
 1. State
+<!-- #endregion -->
 
-
+<!-- #region slideshow={"slide_type": "fragment"} -->
 2. Space
+<!-- #endregion -->
+
+## Simplified State Space Model
 
 
 $$
@@ -34,20 +41,21 @@ p(y_{1:T}, z_{1:T} \mid \theta)
 \end{align}
 $$
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Visual Representation
+<!-- #endregion -->
 
-
+<!-- #region slideshow={"slide_type": "skip"} -->
 Things I need to explain
 * State - The hidden thing we can't observe
-  * Transition model
-* Space - Where we see outcomes or emissions
-  * Emission model
-* Outcome or emissions
+  * Also called transition model
+* Space - Where we see outcomes
+  *  or emissions
+<!-- #endregion -->
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Parts of the equation
-
+<!-- #endregion -->
 
 $$
 \begin{align}
@@ -58,9 +66,9 @@ p(y_{1:T}, z_{1:T} \mid \theta)
 \end{align}
 $$
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Parts of the equation
-
+<!-- #endregion -->
 
 $$
 \begin{align}
@@ -74,9 +82,9 @@ $$
 
 Transmission model or dynamics model
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Parts of the equation
-
+<!-- #endregion -->
 
 $$
 \begin{align}
@@ -90,13 +98,25 @@ $$
 
 Observation model or emissions model
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Hidden Markov Model Notation
+$$
+\begin{align}
+p(y_{1:T}, z_{1:T} \mid \theta) 
+&= \overbrace{\mathrm{Cat}(z_1 \mid \pi)}^{Prior for Initial State}
+\underbrace{\prod_{t=2}^T \mathrm{Cat}(z_t \mid A_{z_{t-1}})}_{Transition Model}
+\overbrace{\prod_{t=1}^T \mathrm{Cat}(y_t \mid B_{z_t})}^{Observation Model}
+\end{align}
+$$
+
+
+<!-- #endregion -->
+
 $$\theta = (\pi, A, B)$$
 
-$$A - Transition Matrix$$
-$$B - Emission Probability$$
-$$\pi - Initial probability$$
+$$A - \text{Transition Matrix}$$
+$$B - \text{Emission Probability}$$
+$$\pi - \text{Initial Probability}$$
 
 
 ## State Space Sequence
@@ -108,7 +128,7 @@ $$\pi - Initial probability$$
 ## Dishonest Casino
 
 
-Two Dice
+The dealer has two twice
 * One dice is fair
 * One dice is biased
 * The dealer swaps the dice at random
