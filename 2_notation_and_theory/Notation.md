@@ -80,88 +80,19 @@ From there we built back up to Linear Regression
 ## State Space Model Simplified Version
 
 
+$$
 \begin{align}
 p(y_{1:T}, z_{1:T} \mid \theta) 
 &= \mathrm{Cat}(z_1 \mid \pi) 
 \prod_{t=2}^T \mathrm{Cat}(z_t \mid A_{z_{t-1}}) 
 \prod_{t=1}^T \mathrm{Cat}(y_t \mid B_{z_t})
 \end{align}
+$$
 
 
-* Hidden Markov Model
-    * No covariates
-    * Categorical discrete outcomes
+## Recap
+* Notation can be challenging but is important
+* Break it down one step at a time
+* Learn the meaning not just the symbols
+* Building things in code really help me
 
-
-## Use the Symbol ist often
-
-
-Its on github
-
-
-
-##
-
-
-## State Space Models
-
-
-Things I need to explain
-* State - The hidden thing we can't observe
-  * Transition model
-* Space - Where we see outcomes or emissions
-  * Emission model
-* Outcome or emissions
-
-
-## Set of hidden states
-
-```python
-
-```
-
-## Time steps
-
-```python
-
-```
-
-## Observations at those time steps
-
-
-## Notation
-$$\theta = (\pi, A, B)$$
-
-A - Transition Matrix
-B - Emission Probability
-$\pi$ - Initial probability
-
-
-What I can do here is build up the diagram one piece at a time to talk through initial state, state, space
-
-
-## The Task
-
-
-If we see a bunch of outcomes can we
-* Estimate what state we are in, or were in, or will be in
-* Estimate the transition matrix
-  * If we don't know it
-* Estimate the starting point
-  * Less useful most of the time but 
-
-
-## Estimators
-for point estimates
-* Stochastic Gradient Descent
-* Expectation Maximization
-
-For full posteriors
-  * HMC
-
-
-## Next Time
-* Casino HMM
-* Filtering (forwards algorithm)
-* Smoothing (forwards-backwards algorithm)
-* Most likely state sequence (Viterbi algorithm)
