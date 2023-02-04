@@ -29,8 +29,16 @@ jupyter:
 2. Space
 <!-- #endregion -->
 
-## Simplified State Space Model
+<!-- #region slideshow={"slide_type": "skip"} -->
+* State - The hidden thing we can't observe
+  * Also called transition model
+* Space - Where we see outcomes
+  *  or emissions
+<!-- #endregion -->
 
+<!-- #region slideshow={"slide_type": "slide"} -->
+## Simplified State Space Model
+<!-- #endregion -->
 
 $$
 \begin{align}
@@ -40,18 +48,6 @@ p(y_{1:T}, z_{1:T} \mid \theta)
 \prod_{t=1}^T \mathrm{Cat}(y_t \mid B_{z_t})
 \end{align}
 $$
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-## Visual Representation
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "skip"} -->
-Things I need to explain
-* State - The hidden thing we can't observe
-  * Also called transition model
-* Space - Where we see outcomes
-  *  or emissions
-<!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "slide"} -->
 ## Parts of the equation
@@ -118,22 +114,34 @@ $$A - \text{Transition Matrix}$$
 $$B - \text{Emission Probability}$$
 $$\pi - \text{Initial Probability}$$
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## State Space Sequence
 <center>
   <img src="img/HMMSequences.png" style="height:850px"; />
 </center>
+<!-- #endregion -->
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Dishonest Casino
+<!-- #endregion -->
 
+<center>
+  <img src="img/TwoDice.avif" style="height:850px"; />
+</center>
 
-The dealer has two twice
+<!-- #region slideshow={"slide_type": "slide"} -->
+## Dishonest Casino Setup
+<!-- #endregion -->
+
+The dealer has two dice
 * One dice is fair
 * One dice is biased
 * The dealer swaps the dice at random
   * **Does not mean uniform random**
 
+<!-- #region slideshow={"slide_type": "slide"} -->
+## Dishonest Casino HMM Questions
+<!-- #endregion -->
 
 * How can we tell which dice is in use based on the outcomes?
   * While were watching live (online filtering)
@@ -141,9 +149,9 @@ The dealer has two twice
 * What will the next dice rolls be? (Future observations forecasting/prediction)
 * what will the next dice dice in use?(Future state forecasting/prediction)
 
-
-## The Task
-
+<!-- #region slideshow={"slide_type": "slide"} -->
+## HMM questions generalized
+<!-- #endregion -->
 
 If we see a bunch of outcomes can we
 * What will happen?
@@ -155,18 +163,9 @@ If we see a bunch of outcomes can we
     * Estimate the emission model parameter
     * Estimate model the starting point
 
-
-## Dynamax Estimators
-for point estimates
-* Stochastic Gradient Descent
-* Expectation Maximization
-
-For full posteriors
-  * HMC
-
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## State Space Model Recap
-
+<!-- #endregion -->
 
 * State and Space are primary terms
 * There are other equally valid terms terms like
@@ -174,23 +173,25 @@ For full posteriors
   * Observation
   * Transition
   * Dynamics
-* We're starting with discrete HMM
-  * No autoregressive dependency
-  * No covariate
-  * Discrete states
+
 * In using SSMs we may be more interested in
   * The hidden system state
     * Either what's next or what's to come
     * After the fact or during the sequencing process
   * What we well see next for observations
   * EStimating the model parameters
+* We're starting with discrete HMM
+  * No autoregressive dependency
+  * No covariate
+  * Discrete states
 
-
+<!-- #region slideshow={"slide_type": "slide"} -->
 ## Reading Next Time
 Full post on Discourse
 
 * Casino HMMs from Dynamax
-* Full read of https://nipunbatra.github.io/hmm/
+* Complete reading of https://nipunbatra.github.io/hmm/
 * Filtering (forwards algorithm)
 * Smoothing (forwards-backwards algorithm)
 * Most likely state sequence (Viterbi algorithm)
+<!-- #endregion -->

@@ -17,3 +17,7 @@ dependencies:
   - pip:
     - dynamax @ git+https://github.com/probml/dynamax
     - preliz
+    - isort
+    - rise
+
+

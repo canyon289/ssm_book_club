@@ -151,9 +151,13 @@ posterior
 ## COVID Example Visualized
 <!-- #endregion -->
 
-**Insert Upload to Youtube here**
+```python hide_input=true
+from IPython.display import HTML, IFrame
 
-<!-- #region slideshow={"slide_type": "-"} -->
+HTML('<iframe width="1280" height="720" src="https://www.youtube.com/embed/dUlakTE8u7E" title="Bayes Theorem Visualized" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>')
+```
+
+<!-- #region slideshow={"slide_type": "skip"} -->
 ## Inverse Problems
 <!-- #endregion -->
 
