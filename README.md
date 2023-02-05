@@ -7,6 +7,7 @@
 * **ProbML Book** - https://probml.github.io/pml-book/book2.html
   * Chapter 8
   * Chapter 9
+  * Chapter 29
 
 ## Environment Setup
 The best way to learn is to get hands on with the code. 
