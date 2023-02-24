@@ -11,6 +11,7 @@
 ## Nipunbatra Article
 * $x$ - Observations
 * $B$ - Emission Probability
+* $B$ - Emission Probability
 * $\phi$ - Transition Matrix
 * $\pi$ - Initial, or prior, Probability
 * $i$ and $j$ are states
