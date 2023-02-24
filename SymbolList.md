@@ -2,15 +2,19 @@
 
 ## State Space Model
 * $y$ - Observations or emissions
-  * The nipunbatra article is using $x$
 * $z$ - Hidden states
 * $t$ - Current timestep
 * $T$ - Final timestep
-
-## HMM Specific
-
 * $A$ - Transition Matrix
 * $B$ - Emission Probability
-  * The nipunbatra artile is using $\phi$
-* $\pi$ - Initial, or prior, Probability
 
+## Nipunbatra Article
+* $x$ - Observations
+* $B$ - Emission Probability
+* $\phi$ - Transition Matrix
+* $\pi$ - Initial, or prior, Probability
+* $i$ and $j$ are states
+  * $K$ is the set of all states
+
+## Dynamax
+* $\alpha$ - Prior concentration
