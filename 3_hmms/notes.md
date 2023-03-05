@@ -24,10 +24,6 @@
 * Identify them in the Dynamax codebase
 * Detail specific things like dirichlet priors
 
-# TODO
-* Simplify and run an HMM notebook and see what happens
-* What is prior concentration and why is it set to 1.1 https://probml.github.io/dynamax/api.html#dynamax.hidden_markov_model.CategoricalHMM
-
 
 ## State Estimation Filtering
 
@@ -67,17 +63,3 @@ This is what I need to learn.
 * There's a lot of probabilities going on
   * Emissions, transition, state
   * In this filtering function we are trying to estimate prob of state
-
-
-## Book Club
-1. Talk about why this is confusing
-  * So much notation
-  * So many probabilities, and likelihoods
-2. Three algorithms for state estimation
-  * Multiple names smoothing, Forward Backward algorithm
-3. Live example
-  * How I go through programs
-  * Calculating filter and predictive steps
-4. Real world use case
-5. Parameter estimation
-6. 
