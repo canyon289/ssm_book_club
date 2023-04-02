@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+
+/* Fonts & Colors
+    ------
+    * Black #2F3645
+    * Accent Blue #0078EE
+    * Callout Yellow #FBC02D
+    * Highlight Blue #9BDDFB
+    * Error Red #E76E62
+    * Highlight Green #4CD5C5
+*/
+.reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-family: "Poppins", "Open Sans", sans-serif;
+	font-weight: 700;
+    margin: 0.2rem 0 0 0 ;
+    color: #00524b;
+}
+
+.reveal p {
+    font-family: "Open Sans", sans-serif;
+    margin: 0.2rem 0 0 0 ;
+    color: #12221D;
+}
+
+.reveal h1 {
+    font-family: "Poppins", "Open Sans", sans-serif;
+    margin: 0.2rem 0 0 0 ;
+    color: #00524b;
+}
+.reveal h1:before { /* Remove if buggy with slide with H1 (alignment or size) */
+    content: '';
+    float: right;
+    width: 30%;
+    height: calc(30vh);
+}
+.reveal p strong {
+    color: #00524b;
+}
+::selection {
+    background-color: #9BDDFB;
+    color: #FFFFFF;
+}
+ul li::marker {
+    color: #56BB92;
+}
+
+/* Links */
+.rise-enabled .reveal a {
+    color: #2F3645;
+    text-decoration: none;
+}
+.reveal .present a {
+    border: 1px #56BB92 solid;
+    border-radius: 4rem;
+    background-color: #FFFFFF !important;
+    padding: 0.4rem 4rem;
+    max-width: 100%;
+    font-size: 0.6em;
+}
+.reveal .present a:hover {
+    border: 1px #FBC02D solid;
+    background-color: #FBC02D !important;
+    color: #FFFFFF;
+    -webkit-transition: 0.15s ease-in;
+    transition: 0.15s ease-in;
+}
+.reveal .present a::selection {
+    background-color: #FFFFFF;
+    color: #2F3645;
+}
+
+/* Format cell */
+div.text_cell_render.rendered_html {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+Background
+.reveal .slide-background-content {
+    opacity: 20%;
+    background-image: url("img/background_slide.png");
+}
+
+/* Arrow */
+.controls-arrow {
+    opacity: 0;
+}
+
+/* Slide Number */
+.slide-number-a {}
+.slide-number-delimiter {
+    visibility: hidden;
+}
+.slide-number-b {
+    visibility: hidden;
+}
+
+/*Center output images*/
+.rise-enabled .reveal section img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
